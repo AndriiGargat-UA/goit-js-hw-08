@@ -17,9 +17,10 @@ const onPlay = throttle((data) => {
 }, 1000);
 
 player.on('timeupdate', onPlay);
+let currentTime = localStorage.getItem("videoplayer-current-time");
 
 player.on("loaded", function () {
-        if (localStorage.getItem("videoplayer-current-time")) {
-            player.setCurrentTime(localStorage.getItem("videoplayer-current-time"));
+        if (currentTime) {
+            player.setCurrentTime(currentTime);
         }
     });
